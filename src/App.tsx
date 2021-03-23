@@ -4,70 +4,44 @@ import {
   HashRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from 'react-router-dom';
-import styled from 'styled-components';
-import Nav from './components/Nav';
 
-
-const Wrapper = styled.div`
- 
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-const Main = styled.div`
-
-  flex-grow: 1;
-  overflow: auto;
-`;
+import Money from './views/Money';
+import Tags from './views/Tags';
+import Statistics from './views/Statistics';
+import NoMatch from './views/NoMatch';
 
 
 function App() {
   return (
     <Router>
-      <Wrapper>
-        <Main>
-          <Switch>
-            <Route path="/money">
-              <Money/>
-            </Route>
-            <Route path="/tags">
-              <Tags/>
-            </Route>
+      <Switch>
+        <Route path="/money">
+          <Money/>
+        </Route>
+        <Route path="/tags">
+          <Tags/>
+        </Route>
 
-            <Route path="/statistics">
-              <Statistics/>
-            </Route>
-            <Redirect exact from='/' to='/money'/>
-            <Route path='*'>
-              <NoMatch/>
-            </Route>
-          </Switch>
-        </Main>
-        <Nav/>
-        </Wrapper>
+        <Route path="/statistics">
+          <Statistics/>
+        </Route>
+        <Redirect exact from='/' to='/money'/>
+        <Route path='*'>
+          <NoMatch/>
+        </Route>
+      </Switch>
+
     </Router>
   );
 }
 
-function NoMatch() {
-  return (
-    <div>页面不存在，请检查输入地址</div>
-  );
-}
 
-function Statistics() {
-  return <h2>statistics</h2>;
-}
 
-function Tags() {
-  return <h2>Tags</h2>;
-}
 
-function Money() {
-  return <h2>Money</h2>;
-}
+
+
+
 
 export default App;
