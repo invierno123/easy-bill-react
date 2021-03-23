@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import React from 'react';
+import Icon from './Icon';
 
-require('icons/money.svg');
-require('icons/tag.svg');
-require('icons/statistics.svg');
+
 
 const NavWrapper = styled.div`
   border: 1px solid blue;
@@ -22,7 +21,8 @@ const NavWrapper = styled.div`
       padding: 4px 0;
       justify-content: center;
       align-items: center;
-      .icon{
+
+      .icon {
         width: 24px;
         height: 24px;
       }
@@ -34,23 +34,17 @@ const Nav = () => {
     <NavWrapper>
       <ul>
         <li>
-        <svg className='icon'>
-          <use xlinkHref='#tag'/>
-        </svg>
-        <Link to="/tags">标签页</Link>
-      </li>
+          <Icon name='tag'/>
+          <Link to="/tags">标签页</Link>
+        </li>
 
         <li>
-          <svg className='icon'>
-            <use xlinkHref='#money'/>
-          </svg>
+          <Icon name='money'/>
           <Link to="/money">记账页</Link>
         </li>
 
         <li>
-          <svg className='icon'>
-            <use xlinkHref='#statistics'/>
-          </svg>
+          <Icon name='statistics'/>
           <Link to="/statistics">统计页</Link>
         </li>
       </ul>
