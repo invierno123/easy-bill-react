@@ -40,9 +40,10 @@ const NoteSection: React.FC = () => {
                placeholder='请输入备注'
                ref={refInput}
                defaultValue={note}
-               onBlur={MouseOut}
+               onBlur={MouseOut}/>
+        {/*如果使用受控组件onChange，可能会出现bug,React onChange和HTML onChange是不同的，
+        React onChange会在你输入一个字后就触发，HTML onChange会在鼠标移开后触发*/}
 
-        />
       </label>
     </Wrapper>
   );
