@@ -20,8 +20,9 @@ const InitSection = styled.section`
       padding: 3px 18px;
       font-size: 14px;
       margin: 8px 12px;
-      &.selected{
-        background: lightblue   ;
+
+      &.selected {
+        background: lightblue;
       }
     }
   }
@@ -35,9 +36,13 @@ const InitSection = styled.section`
     margin-top: 8px;
   }
 `;
-const TagsSection: React.FC = () => {
+type Props = {
+  value: string[];
+  onChange: (selected:string[]) => void
+}
+const TagsSection: React.FC<Props> = (props) => {
   const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const selectedTags = props.value;
   const onAddTag = () => {
     const tagName = window.prompt('新添加的标签名为');
     if (tagName !== null) {
@@ -47,18 +52,20 @@ const TagsSection: React.FC = () => {
   const onToggleTag = (tag: string) => {
     const index = selectedTags.indexOf(tag);
     if (index >= 0) {
-      setSelectedTags(selectedTags.filter(t => t !== tag));
+      props.onChange(selectedTags.filter(t => t !== tag));
     } else {
-      setSelectedTags([...selectedTags, tag]);
+      props.onChange([...selectedTags, tag]);
     }
   };
   return (
     <InitSection>
       <ol>
         {tags.map(tag =>
-          <li onClick={() => {onToggleTag(tag);}}
+          <li onClick={() => {
+            onToggleTag(tag);
+          }}
               key={tag}
-          className={selectedTags.indexOf(tag)>=0?'selected':''}
+              className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}
           >{tag}</li>)}
 
       </ol>
