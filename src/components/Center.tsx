@@ -4,6 +4,6 @@ const Center=styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 72px;
+  height: 108px;
 `
 export {Center}
