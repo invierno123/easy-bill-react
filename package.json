@@ -1,6 +1,7 @@
 {
   "name": "react-easy-billl",
   "version": "0.1.0",
+  "homepage": "https://invierno123.github.io/easy-bill-react-website/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
